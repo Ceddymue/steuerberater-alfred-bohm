@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steuerberater Alfred Böhm | Offenbach am Main</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #1a3a5c;
+      --secondary: #2980b9;
+      --bg: #f8f9fa;
+      --text: #2c3e50;
+      --accent: #27ae60;
+      --white: #ffffff;
+      --light: #eaf0f7;
+    }
+    body { font-family: 'Source Sans Pro', sans-serif; color: var(--text); background: var(--bg); line-height: 1.7; }
+    h1, h2, h3 { font-family: 'Merriweather', serif; }
+
+    /* NAV */
+    nav { background: var(--primary); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    .nav-brand { color: var(--white); font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; padding: 1.2rem 0; text-decoration: none; line-height: 1.3; }
+    .nav-brand span { display: block; font-size: 0.7rem; font-family: 'Source Sans Pro', sans-serif; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; opacity: 0.75; margin-top: 2px; }
+    .nav-links { display: flex; gap: 0; }
+    .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; padding: 1.5rem 1.1rem; font-size: 0.92rem; font-weight: 600; letter-spacing: 0.3px; transition: color 0.2s, background 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(255,255,255,0.08); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, var(--primary) 0%, #243b6e 60%, #2980b9 100%); color: var(--white); padding: 7rem 2rem 6rem; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .hero-inner { position: relative; max-width: 800px; margin: 0 auto; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; padding: 0.4rem 1rem; font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .hero-badge .stars { color: #f1c40f; letter-spacing: 2px; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; margin-bottom: 1.2rem; line-height: 1.25; }
+    .hero p { font-size: 1.2rem; opacity: 0.88; max-width: 600px; margin: 0 auto 2.5rem; font-weight: 300; }
+    .btn { display: inline-block; background: var(--accent); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; letter-spacing: 0.3px; }
+    .btn:hover { background: #219a52; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(39,174,96,0.35); }
+    .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.6); margin-left: 1rem; }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); box-shadow: none; }
+
+    /* TRUST BAR */
+    .trust-bar { background: var(--primary); border-top: 1px solid rgba(255,255,255,0.1); }
+    .trust-bar-inner { max-width: 1000px; margin: 0 auto; padding: 1.2rem 2rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+    .trust-item { color: rgba(255,255,255,0.85); font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
+    .trust-item strong { color: var(--white); }
+
+    /* FEATURES */
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--secondary); margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--primary); margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1.1rem; color: #5a6a7a; max-width: 600px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .feature-card { background: var(--white); border-radius: 8px; padding: 2rem; box-shadow: 0 2px 16px rgba(0,0,0,0.06); border-top: 4px solid var(--secondary); transition: transform 0.2s, box-shadow 0.2s; }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+    .feature-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .feature-card h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 0.6rem; }
+    .feature-card p { font-size: 0.95rem; color: #5a6a7a; }
+
+    /* REVIEWS */
+    .reviews-section { background: var(--light); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .review-card { background: var(--white); border-radius: 8px; padding: 1.8rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); position: relative; }
+    .review-card::before { content: '"'; font-size: 5rem; color: var(--light); font-family: 'Merriweather', serif; position: absolute; top: -0.5rem; left: 1rem; line-height: 1; }
+    .review-stars { color: #f1c40f; font-size: 1rem; margin-bottom: 0.8rem; }
+    .review-text { font-size: 0.97rem; color: var(--text); line-height: 1.7; margin-bottom: 1.2rem; position: relative; }
+    .review-author { font-weight: 700; font-size: 0.9rem; color: var(--primary); }
+    .review-date { font-size: 0.82rem; color: #8a9ab0; }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--primary), #243b6e); color: var(--white); text-align: center; padding: 5rem 2rem; }
+    .cta-section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 1rem; }
+    .cta-section p { opacity: 0.85; font-size: 1.1rem; max-width: 550px; margin: 0 auto 2rem; }
+
+    /* FOOTER */
+    footer { background: #0f2236; color: rgba(255,255,255,0.7); padding: 3rem 2rem 1.5rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    footer h4 { color: var(--white); font-family: 'Merriweather', serif; font-size: 0.95rem; margin-bottom: 1rem; }
+    footer p, footer a { font-size: 0.9rem; line-height: 1.9; color: rgba(255,255,255,0.65); text-decoration: none; display: block; }
+    footer a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.2rem; text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.4); max-width: 1100px; margin: 0 auto; }
+
+    @media (max-width: 640px) {
+      .nav-links a { padding: 1.5rem 0.7rem; font-size: 0.82rem; }
+      .btn-outline { display: none; }
+      .trust-bar-inner { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Steuerberater Alfred Böhm<span>Kanzlei Offenbach am Main</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Startseite</a>
+    <a href="about.html">Über uns</a>
+    <a href="services.html">Leistungen</a>
+    <a href="contact.html">Kontakt</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="stars">★★★★★</span> 4,9 von 5 – 9 Bewertungen</div>
+    <h1>Ihr verlässlicher Steuerberater in Offenbach am Main</h1>
+    <p>Kompetente Steuerberatung für Privatpersonen und Unternehmen – persönlich, zuverlässig und auf Sie zugeschnitten.</p>
+    <a href="contact.html" class="btn">Termin vereinbaren</a>
+    <a href="services.html" class="btn btn-outline">Unsere Leistungen</a>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">⭐ <strong>4,9 / 5</strong>&nbsp;Bewertung</div>
+    <div class="trust-item">📍 <strong>Kaiserstraße 11</strong>, Offenbach</div>
+    <div class="trust-item">📞 <strong>069 9855890</strong></div>
+    <div class="trust-item">✔ <strong>Schnelle</strong> Reaktionszeiten</div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Warum Böhm?</p>
+    <h2 class="section-title">Steuerberatung, der Sie vertrauen können</h2>
+    <p class="section-subtitle">Seit Jahren unterstützen wir unsere Mandanten mit fachkundiger Beratung und persönlichem Engagement.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🏛️</div>
+        <h3>Erfahrene Kanzlei</h3>
+        <p>Jahrelange Praxiserfahrung in der Steuerberatung für Privatpersonen, Freiberufler und Unternehmen.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Schnelle Reaktionszeiten</h3>
+        <p>Auf Anfragen wird sofort reagiert – unsere Mandanten schätzen die unkomplizierte und prompte Kommunikation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <h3>Proaktive Betreuung</h3>
+        <p>Wir unterstützen Sie aktiv bei steuerlichen Angelegenheiten, nicht nur auf Nachfrage.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>Fachkompetentes Team</h3>
+        <p>Unser qualifiziertes Team ist stets erreichbar und hilft Ihnen auch kurzfristig weiter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reviews-section">
+  <div class="section-inner">
+    <p class="section-label">Stimmen unserer Mandanten</p>
+    <h2 class="section-title">Das sagen unsere Mandanten</h2>
+    <p class="section-subtitle">Echte Bewertungen von Google Maps – 4,9 Sterne aus 9 Bewertungen.</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Ich bin seit Jahren bei der Kanzlei vom Herrn Böhm und rundum zufrieden. Das Team ist super, auf Anfragen wird sofort reagiert, die Kolleg*innen sind immer erreichbar und unterstützen mich proaktiv bei all meinen steuerlichen Angelegenheiten.</p>
+        <div class="review-author">Emre Sahin</div>
+        <div class="review-date">Vor 4 Monaten · Klare Empfehlung!</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Sehr kompetentes erfahrenes Steuerbüro. Sehr nette Mitarbeiter. Alles top. Vielen herzlichen Dank!</p>
+        <div class="review-author">Rita Vietze</div>
+        <div class="review-date">Local Guide · 51 Bewertungen</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Ein tolles fachkompetentes Team, welches mir auch kurzfristig weiterhelfen konnte. Vielen Dank.</p>
+        <div class="review-author">Danilo Klee</div>
+        <div class="review-date">Local Guide · Vor 2 Jahren</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="section-inner">
+    <h2>Bereit für Ihre persönliche Steuerberatung?</h2>
+    <p>Vereinbaren Sie noch heute einen Termin – wir freuen uns auf Ihre Anfrage.</p>
+    <a href="contact.html" class="btn">Jetzt Termin vereinbaren</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h4>Steuerberater Alfred Böhm</h4>
+      <p>Ihre persönliche Steuerkanzlei in Offenbach am Main – kompetent, zuverlässig, erreichbar.</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <a href="index.html">Startseite</a>
+      <a href="about.html">Über uns</a>
+      <a href="services.html">Leistungen</a>
+      <a href="contact.html">Kontakt</a>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <p>📍 Kaiserstraße 11<br>63065 Offenbach am Main</p>
+      <p>📞 069 9855890</p>
+      <p>🕐 Di–Do 9:00–12:30 & 13:30–17:30<br>Fr 9:00–12:30 & 13:30–15:30</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Steuerberater Alfred Böhm · Kaiserstraße 11 · 63065 Offenbach am Main</div>
+</footer>
+
+</body>
+</html>

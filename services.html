@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leistungen | Steuerberater Alfred Böhm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --primary: #1a3a5c; --secondary: #2980b9; --bg: #f8f9fa; --text: #2c3e50; --accent: #27ae60; --white: #ffffff; --light: #eaf0f7; }
+    body { font-family: 'Source Sans Pro', sans-serif; color: var(--text); background: var(--bg); line-height: 1.7; }
+    h1, h2, h3 { font-family: 'Merriweather', serif; }
+    nav { background: var(--primary); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    .nav-brand { color: var(--white); font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; padding: 1.2rem 0; text-decoration: none; line-height: 1.3; }
+    .nav-brand span { display: block; font-size: 0.7rem; font-family: 'Source Sans Pro', sans-serif; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; opacity: 0.75; margin-top: 2px; }
+    .nav-links { display: flex; }
+    .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; padding: 1.5rem 1.1rem; font-size: 0.92rem; font-weight: 600; transition: color 0.2s, background 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(255,255,255,0.08); }
+    .page-header { background: linear-gradient(135deg, var(--primary) 0%, #243b6e 100%); color: var(--white); padding: 4rem 2rem; text-align: center; }
+    .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 0.75rem; }
+    .page-header p { opacity: 0.85; font-size: 1.1rem; max-width: 550px; margin: 0 auto; }
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--secondary); margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.5rem, 3vw, 2rem); color: var(--primary); margin-bottom: 1rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .service-card { background: var(--white); border-radius: 10px; padding: 2.2rem; box-shadow: 0 2px 16px rgba(0,0,0,0.07); transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+    .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--secondary), var(--accent)); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(0,0,0,0.12); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon { font-size: 2.5rem; margin-bottom: 1.2rem; }
+    .service-card h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 0.75rem; }
+    .service-card p { font-size: 0.95rem; color: #5a6a7a; margin-bottom: 1rem; }
+    .service-card ul { list-style: none; font-size: 0.9rem; color: #5a6a7a; }
+    .service-card ul li { padding: 0.25rem 0; padding-left: 1.4rem; position: relative; }
+    .service-card ul li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .process-section { background: var(--light); }
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; counter-reset: steps; }
+    .process-step { background: var(--white); border-radius: 8px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); counter-increment: steps; position: relative; }
+    .step-number { width: 48px; height: 48px; background: var(--primary); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Merriweather', serif; font-size: 1.2rem; font-weight: 700; margin: 0 auto 1rem; }
+    .process-step h3 { font-size: 1rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .process-step p { font-size: 0.9rem; color: #5a6a7a; }
+    .cta-section { background: linear-gradient(135deg, var(--primary), #243b6e); color: var(--white); text-align: center; padding: 5rem 2rem; }
+    .cta-section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 1rem; }
+    .cta-section p { opacity: 0.85; font-size: 1.1rem; max-width: 550px; margin: 0 auto 2rem; }
+    .btn { display: inline-block; background: var(--accent); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; }
+    .btn:hover { background: #219a52; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(39,174,96,0.35); }
+    footer { background: #0f2236; color: rgba(255,255,255,0.7); padding: 3rem 2rem 1.5rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    footer h4 { color: var(--white); font-family: 'Merriweather', serif; font-size: 0.95rem; margin-bottom: 1rem; }
+    footer p, footer a { font-size: 0.9rem; line-height: 1.9; color: rgba(255,255,255,0.65); text-decoration: none; display: block; }
+    footer a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.2rem; text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.4); max-width: 1100px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Steuerberater Alfred Böhm<span>Kanzlei Offenbach am Main</span></a>
+  <div class="nav-links">
+    <a href="index.html">Startseite</a>
+    <a href="about.html">Über uns</a>
+    <a href="services.html" class="active">Leistungen</a>
+    <a href="contact.html">Kontakt</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>Unsere Leistungen</h1>
+  <p>Umfassende Steuerberatung aus einer Hand – für Privatpersonen und Unternehmen.</p>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Was wir für Sie tun</p>
+    <h2 class="section-title">Unser Leistungsangebot</h2>
+    <p>Von der privaten Steuererklärung bis zur komplexen Unternehmenssteuer – wir bieten Ihnen das volle Spektrum der Steuerberatung.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Steuerberatung</h3>
+        <p>Individuelle steuerliche Beratung für Privatpersonen, Freiberufler und Unternehmen.</p>
+        <ul>
+          <li>Einkommensteuererklärung</li>
+          <li>Körperschaftsteuer</li>
+          <li>Gewerbesteuer</li>
+          <li>Umsatzsteuer</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Buchhaltung</h3>
+        <p>Sorgfältige und termingerechte Buchführung für Ihr Unternehmen.</p>
+        <ul>
+          <li>Laufende Finanzbuchhaltung</li>
+          <li>BWA & Controlling</li>
+          <li>DATEV-gestützte Buchführung</li>
+          <li>Digitale Belegverarbeitung</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📄</div>
+        <h3>Jahresabschluss</h3>
+        <p>Professionelle Erstellung von Jahresabschlüssen nach HGB.</p>
+        <ul>
+          <li>Bilanz & GuV</li>
+          <li>Einnahmen-Überschuss-Rechnung</li>
+          <li>Anhang & Lagebericht</li>
+          <li>Offenlegung beim Bundesanzeiger</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👥</div>
+        <h3>Lohnbuchhaltung</h3>
+        <p>Zuverlässige Lohn- und Gehaltsabrechnungen für Ihr Team.</p>
+        <ul>
+          <li>Monatliche Lohnabrechnungen</li>
+          <li>Sozialversicherungsmeldungen</li>
+          <li>Lohnsteuerjahresausgleich</li>
+          <li>Digitale Personalakte</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Betriebsprüfung</h3>
+        <p>Kompetente Begleitung bei Betriebsprüfungen und Steuerverfahren.</p>
+        <ul>
+          <li>Vorbereitung & Begleitung</li>
+          <li>Einspruchsverfahren</li>
+          <li>Kommunikation mit dem Finanzamt</li>
+          <li>Außenprüfungen</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💼</div>
+        <h3>Unternehmensberatung</h3>
+        <p>Strategische Beratung für den wirtschaftlichen Erfolg Ihres Unternehmens.</p>
+        <ul>
+          <li>Unternehmensgründung</li>
+          <li>Rechtsformwahl</li>
+          <li>Finanzplanung & Liquidität</li>
+          <li>Unternehmensnachfolge</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section process-section">
+  <div class="section-inner">
+    <p class="section-label">So arbeiten wir</p>
+    <h2 class="section-title">Unser Prozess – einfach und transparent</h2>
+    <p>Von der ersten Anfrage bis zur fertigen Steuererklärung begleiten wir Sie Schritt für Schritt.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <h3>Erstgespräch</h3>
+        <p>Kostenfreies Kennenlerngespräch – wir analysieren Ihre Situation und klären offene Fragen.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <h3>Unterlagen</h3>
+        <p>Sie stellen uns die notwendigen Unterlagen bereit – digital oder persönlich.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <h3>Bearbeitung</h3>
+        <p>Unser Team bearbeitet Ihren Auftrag termingerecht und mit höchster Sorgfalt.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">4</div>
+        <h3>Ergebnis</h3>
+        <p>Sie erhalten das Ergebnis mit einer verständlichen Erläuterung – wir bleiben Ihr Ansprechpartner.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="section-inner">
+    <h2>Bereit für professionelle Steuerberatung?</h2>
+    <p>Vereinbaren Sie einen unverbindlichen Beratungstermin – wir freuen uns auf Sie.</p>
+    <a href="contact.html" class="btn">Jetzt Termin vereinbaren</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h4>Steuerberater Alfred Böhm</h4>
+      <p>Ihre persönliche Steuerkanzlei in Offenbach am Main – kompetent, zuverlässig, erreichbar.</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <a href="index.html">Startseite</a>
+      <a href="about.html">Über uns</a>
+      <a href="services.html">Leistungen</a>
+      <a href="contact.html">Kontakt</a>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <p>📍 Kaiserstraße 11<br>63065 Offenbach am Main</p>
+      <p>📞 069 9855890</p>
+      <p>🕐 Di–Do 9:00–12:30 & 13:30–17:30<br>Fr 9:00–12:30 & 13:30–15:30</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Steuerberater Alfred Böhm · Kaiserstraße 11 · 63065 Offenbach am Main</div>
+</footer>
+</body>
+</html>

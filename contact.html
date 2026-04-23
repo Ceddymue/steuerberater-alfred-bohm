@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt | Steuerberater Alfred Böhm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --primary: #1a3a5c; --secondary: #2980b9; --bg: #f8f9fa; --text: #2c3e50; --accent: #27ae60; --white: #ffffff; --light: #eaf0f7; }
+    body { font-family: 'Source Sans Pro', sans-serif; color: var(--text); background: var(--bg); line-height: 1.7; }
+    h1, h2, h3 { font-family: 'Merriweather', serif; }
+    nav { background: var(--primary); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    .nav-brand { color: var(--white); font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; padding: 1.2rem 0; text-decoration: none; line-height: 1.3; }
+    .nav-brand span { display: block; font-size: 0.7rem; font-family: 'Source Sans Pro', sans-serif; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; opacity: 0.75; margin-top: 2px; }
+    .nav-links { display: flex; }
+    .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; padding: 1.5rem 1.1rem; font-size: 0.92rem; font-weight: 600; transition: color 0.2s, background 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(255,255,255,0.08); }
+    .page-header { background: linear-gradient(135deg, var(--primary) 0%, #243b6e 100%); color: var(--white); padding: 4rem 2rem; text-align: center; }
+    .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 0.75rem; }
+    .page-header p { opacity: 0.85; font-size: 1.1rem; max-width: 550px; margin: 0 auto; }
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; }
+    .contact-info h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 2rem; }
+    .info-card { background: var(--white); border-radius: 10px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; gap: 1rem; align-items: flex-start; }
+    .info-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .info-card h3 { font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--secondary); margin-bottom: 0.25rem; font-family: 'Source Sans Pro', sans-serif; }
+    .info-card p { font-size: 0.97rem; color: var(--text); line-height: 1.6; }
+    .info-card a { color: var(--secondary); text-decoration: none; }
+    .info-card a:hover { text-decoration: underline; }
+    .hours-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; font-size: 0.9rem; }
+    .hours-table tr td { padding: 0.2rem 0; }
+    .hours-table tr td:first-child { color: #8a9ab0; width: 90px; }
+    .hours-table tr td:last-child { font-weight: 600; color: var(--text); }
+    .closed { color: #c0392b !important; font-weight: 600 !important; }
+    .map-placeholder { background: linear-gradient(135deg, var(--light), #d4e6f1); border-radius: 10px; height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--primary); font-size: 0.95rem; margin-top: 1rem; border: 2px dashed rgba(41,128,185,0.3); }
+    .map-placeholder .map-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .form-card { background: var(--white); border-radius: 12px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+    .form-card h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .form-card > p { color: #8a9ab0; font-size: 0.95rem; margin-bottom: 2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.88rem; font-weight: 600; color: var(--primary); margin-bottom: 0.4rem; letter-spacing: 0.3px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 0.75rem 1rem; border: 2px solid #e0e8f0; border-radius: 6px;
+      font-family: 'Source Sans Pro', sans-serif; font-size: 0.97rem; color: var(--text);
+      background: #fafcff; transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(41,128,185,0.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .btn { display: inline-block; background: var(--accent); color: var(--white); padding: 0.95rem 2.5rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 1rem; border: none; cursor: pointer; width: 100%; text-align: center; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; font-family: 'Source Sans Pro', sans-serif; letter-spacing: 0.3px; }
+    .btn:hover { background: #219a52; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(39,174,96,0.3); }
+    footer { background: #0f2236; color: rgba(255,255,255,0.7); padding: 3rem 2rem 1.5rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    footer h4 { color: var(--white); font-family: 'Merriweather', serif; font-size: 0.95rem; margin-bottom: 1rem; }
+    footer p, footer a { font-size: 0.9rem; line-height: 1.9; color: rgba(255,255,255,0.65); text-decoration: none; display: block; }
+    footer a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.2rem; text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.4); max-width: 1100px; margin: 0 auto; }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Steuerberater Alfred Böhm<span>Kanzlei Offenbach am Main</span></a>
+  <div class="nav-links">
+    <a href="index.html">Startseite</a>
+    <a href="about.html">Über uns</a>
+    <a href="services.html">Leistungen</a>
+    <a href="contact.html" class="active">Kontakt</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>Kontakt</h1>
+  <p>Wir freuen uns auf Ihre Anfrage – nehmen Sie unverbindlich Kontakt auf.</p>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <h2>So erreichen Sie uns</h2>
+
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <div>
+            <h3>Adresse</h3>
+            <p>Kaiserstraße 11<br>63065 Offenbach am Main</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">📞</div>
+          <div>
+            <h3>Telefon</h3>
+            <p><a href="tel:0699855890">069 9855890</a></p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">🕐</div>
+          <div>
+            <h3>Öffnungszeiten</h3>
+            <table class="hours-table">
+              <tr><td>Montag</td><td class="closed">Geschlossen</td></tr>
+              <tr><td>Dienstag</td><td>9:00–12:30 &amp; 13:30–17:30</td></tr>
+              <tr><td>Mittwoch</td><td>9:00–12:30 &amp; 13:30–17:30</td></tr>
+              <tr><td>Donnerstag</td><td>9:00–12:30 &amp; 13:30–17:30</td></tr>
+              <tr><td>Freitag</td><td>9:00–12:30 &amp; 13:30–15:30</td></tr>
+              <tr><td>Samstag</td><td class="closed">Geschlossen</td></tr>
+              <tr><td>Sonntag</td><td class="closed">Geschlossen</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="map-placeholder">
+          <div class="map-icon">🗺️</div>
+          <strong>Kaiserstraße 11, Offenbach</strong>
+          <p style="font-size:0.85rem;color:#8a9ab0;margin-top:0.3rem;">Gut erreichbar mit S-Bahn & Bus</p>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h2>Nachricht senden</h2>
+        <p>Füllen Sie das Formular aus – wir melden uns schnellstmöglich bei Ihnen.</p>
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Vorname *</label>
+              <input type="text" id="fname" placeholder="Max" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Nachname *</label>
+              <input type="text" id="lname" placeholder="Mustermann" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail-Adresse *</label>
+            <input type="email" id="email" placeholder="max@mustermann.de" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefonnummer</label>
+            <input type="tel" id="phone" placeholder="069 xxxxxxx">
+          </div>
+          <div class="form-group">
+            <label for="subject">Betreff *</label>
+            <select id="subject" required>
+              <option value="" disabled selected>Bitte wählen...</option>
+              <option>Steuerberatung – Privatperson</option>
+              <option>Steuerberatung – Unternehmen</option>
+              <option>Buchhaltung</option>
+              <option>Jahresabschluss</option>
+              <option>Lohnbuchhaltung</option>
+              <option>Erstgespräch / Kennenlernen</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Ihre Nachricht *</label>
+            <textarea id="message" placeholder="Beschreiben Sie kurz Ihr Anliegen..." required></textarea>
+          </div>
+          <button type="submit" class="btn">Nachricht absenden</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h4>Steuerberater Alfred Böhm</h4>
+      <p>Ihre persönliche Steuerkanzlei in Offenbach am Main – kompetent, zuverlässig, erreichbar.</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <a href="index.html">Startseite</a>
+      <a href="about.html">Über uns</a>
+      <a href="services.html">Leistungen</a>
+      <a href="contact.html">Kontakt</a>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <p>📍 Kaiserstraße 11<br>63065 Offenbach am Main</p>
+      <p>📞 069 9855890</p>
+      <p>🕐 Di–Do 9:00–12:30 & 13:30–17:30<br>Fr 9:00–12:30 & 13:30–15:30</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Steuerberater Alfred Böhm · Kaiserstraße 11 · 63065 Offenbach am Main</div>
+</footer>
+</body>
+</html>
