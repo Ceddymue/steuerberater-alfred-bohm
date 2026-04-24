@@ -17,7 +17,10 @@
     .nav-links { display: flex; }
     .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; padding: 1.5rem 1.1rem; font-size: 0.92rem; font-weight: 600; transition: color 0.2s, background 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(255,255,255,0.08); }
-    .page-header { background: linear-gradient(135deg, var(--primary) 0%, #243b6e 100%); color: var(--white); padding: 4rem 2rem; text-align: center; }
+    .page-header { position: relative; overflow: hidden; min-height: 280px; display: flex; align-items: center; justify-content: center; }
+    .page-header-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+    .page-header-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(26,58,92,0.9) 0%, rgba(36,59,110,0.85) 100%); }
+    .page-header-content { position: relative; z-index: 1; text-align: center; padding: 4rem 2rem; color: var(--white); }
     .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 0.75rem; }
     .page-header p { opacity: 0.85; font-size: 1.1rem; max-width: 550px; margin: 0 auto; }
     .section { padding: 5rem 2rem; }
@@ -25,7 +28,9 @@
     .section-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--secondary); margin-bottom: 0.75rem; }
     .section-title { font-size: clamp(1.5rem, 3vw, 2rem); color: var(--primary); margin-bottom: 1.2rem; }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .about-image { background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 12px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; font-size: 6rem; color: rgba(255,255,255,0.3); }
+    .about-image { border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.5s; }
+    .about-image:hover img { transform: scale(1.03); }
     .about-text h2 { font-size: 1.8rem; color: var(--primary); margin-bottom: 1.2rem; }
     .about-text p { color: #5a6a7a; margin-bottom: 1rem; font-size: 1.05rem; }
     .about-alt { background: var(--light); }
@@ -33,6 +38,8 @@
     .value-card { background: var(--white); border-radius: 8px; padding: 1.8rem; box-shadow: 0 2px 12px rgba(0,0,0,0.05); border-left: 4px solid var(--accent); }
     .value-card h3 { color: var(--primary); font-size: 1rem; margin-bottom: 0.5rem; }
     .value-card p { font-size: 0.93rem; color: #5a6a7a; }
+    .team-section-img { position: relative; overflow: hidden; height: 360px; border-radius: 12px; }
+    .team-section-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
     .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
     .team-card { text-align: center; }
     .team-avatar { width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 1rem; color: rgba(255,255,255,0.4); }
@@ -40,12 +47,17 @@
     .team-card p { font-size: 0.88rem; color: #8a9ab0; }
     .btn { display: inline-block; background: var(--accent); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; margin-top: 1.5rem; }
     .btn:hover { background: #219a52; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(39,174,96,0.35); }
+    .cta-section { background: linear-gradient(135deg, var(--primary), #243b6e); color: var(--white); text-align: center; padding: 5rem 2rem; }
+    .cta-section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 1rem; }
+    .cta-section p { opacity: 0.85; font-size: 1.1rem; max-width: 550px; margin: 0 auto 2rem; }
     footer { background: #0f2236; color: rgba(255,255,255,0.7); padding: 3rem 2rem 1.5rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
     footer h4 { color: var(--white); font-family: 'Merriweather', serif; font-size: 0.95rem; margin-bottom: 1rem; }
     footer p, footer a { font-size: 0.9rem; line-height: 1.9; color: rgba(255,255,255,0.65); text-decoration: none; display: block; }
     footer a:hover { color: var(--white); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.2rem; text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.4); max-width: 1100px; margin: 0 auto; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.4); max-width: 1100px; margin: 0 auto; }
+    .footer-bottom a { display: inline; color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+    .footer-bottom a:hover { color: var(--white); }
     @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
   </style>
 </head>
@@ -57,18 +69,25 @@
     <a href="about.html" class="active">Über uns</a>
     <a href="services.html">Leistungen</a>
     <a href="contact.html">Kontakt</a>
+    <a href="impressum.html">Impressum</a>
   </div>
 </nav>
 
 <div class="page-header">
-  <h1>Über unsere Kanzlei</h1>
-  <p>Persönlich, kompetent und immer für Sie da – das ist unser Versprechen.</p>
+  <img class="page-header-bg" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=85&auto=format&fit=crop" alt="Moderne Büroräume">
+  <div class="page-header-overlay"></div>
+  <div class="page-header-content">
+    <h1>Über unsere Kanzlei</h1>
+    <p>Persönlich, kompetent und immer für Sie da – das ist unser Versprechen.</p>
+  </div>
 </div>
 
 <section class="section">
   <div class="section-inner">
     <div class="about-grid">
-      <div class="about-image">🏛️</div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=85&auto=format&fit=crop" alt="Kanzleiteam bei der Beratung">
+      </div>
       <div class="about-text">
         <p class="section-label">Unsere Geschichte</p>
         <h2>Alfred Böhm – Ihr Steuerberater in Offenbach</h2>
@@ -112,6 +131,11 @@
     <p class="section-label">Das Team</p>
     <h2 class="section-title">Kompetente Ansprechpartner</h2>
     <p>Unser eingespieltes Team sorgt dafür, dass Ihre steuerlichen Angelegenheiten in besten Händen sind.</p>
+    <div style="margin-top: 2.5rem;">
+      <div class="team-section-img">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=85&auto=format&fit=crop" alt="Das Team der Kanzlei Böhm">
+      </div>
+    </div>
     <div class="team-grid">
       <div class="team-card">
         <div class="team-avatar">👨‍💼</div>
@@ -132,6 +156,12 @@
   </div>
 </section>
 
+<section class="cta-section">
+  <h2>Sprechen Sie mit uns.</h2>
+  <p>Nehmen Sie unverbindlich Kontakt auf – wir freuen uns auf Sie.</p>
+  <a href="contact.html" class="btn">Jetzt Termin vereinbaren</a>
+</section>
+
 <footer>
   <div class="footer-inner">
     <div>
@@ -144,6 +174,7 @@
       <a href="about.html">Über uns</a>
       <a href="services.html">Leistungen</a>
       <a href="contact.html">Kontakt</a>
+      <a href="impressum.html">Impressum</a>
     </div>
     <div>
       <h4>Kontakt</h4>
@@ -152,7 +183,10 @@
       <p>🕐 Di–Do 9:00–12:30 & 13:30–17:30<br>Fr 9:00–12:30 & 13:30–15:30</p>
     </div>
   </div>
-  <div class="footer-bottom">© 2025 Steuerberater Alfred Böhm · Kaiserstraße 11 · 63065 Offenbach am Main</div>
+  <div class="footer-bottom">
+    <span>© 2025 Steuerberater Alfred Böhm · Kaiserstraße 11 · 63065 Offenbach am Main</span>
+    <a href="impressum.html">Impressum</a>
+  </div>
 </footer>
 </body>
 </html>
